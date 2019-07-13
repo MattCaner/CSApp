@@ -1,6 +1,5 @@
 #pragma once
-#include"AppWindow.h"
-#include"Utilities.h"
+#include"CSApp_basic.h"
 
 
 class Panel {
@@ -16,12 +15,14 @@ public:
 
 	SDL_Rect GetLimits() const;
 
+	void setBackgroundTextureArray(TextureArray* t, int textureNumber = 0);
+
+	void clearBackground();
+
 	void setPosition(v2d position);
 	void setPosition(v2di position);
 
 private:
-
-	SDL_Rect* _limits;
 
 	Panel* _parent;
 	AppWindow* _appWindow;
@@ -30,5 +31,8 @@ private:
 	int _sizeY;
 	int _posX;
 	int _posY;
+
+	TextureArray* _textures;
+	int _textureIndex;
 
 };

@@ -31,3 +31,13 @@ v2di v2di::operator*(int i) const {
 float v2di::CartesianLenght() const {
 	return sqrtf((float)x * x + (float)y * y);
 }
+
+inline bool mouseInRectangle(int mouseX, int mouseY, int up, int down, int left, int right) {
+	if (mouseX > left && mouseX < right && mouseY < down && mouseY > up) return true;
+	else return false;
+};
+
+inline bool mouseInRectangle(int mouseX, int mouseY, int rectanglePosX, int rectanglePosY, int w, int h) {
+	if (mouseX > rectanglePosX && mouseX < rectanglePosX + w && mouseY > rectanglePosY && mouseY < rectanglePosY + h) return true;
+	else return false;
+}

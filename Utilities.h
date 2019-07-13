@@ -1,4 +1,5 @@
 #pragma once
+#include"CSApp_basic.h"
 
 struct v2d {
 	v2d(float newx, float newy) : x(newx), y(newy) {}
@@ -23,3 +24,7 @@ struct v2di {
 	int x;
 	int y;
 };
+
+inline bool mouseInRectangle(int mouseX, int mouseY, int up, int down, int left, int right);
+
+inline bool mouseInRectangle(int mouseX, int mouseY, int rectanglePos, int w, int h);

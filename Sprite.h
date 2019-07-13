@@ -1,6 +1,5 @@
 #pragma once
-#include"Panel.h"
-#include"TextureArray.h"
+#include"CSApp_basic.h"
 
 class Sprite {
 public:

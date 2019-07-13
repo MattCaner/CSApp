@@ -1,6 +1,5 @@
 #pragma once
 #include"CSApp_basic.h"
-#include"AppState.h"
 
 SDL_Texture* loadFromFile(std::string from);
 
