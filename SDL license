@@ -1,4 +1,5 @@
-This library is written as an improvement to SDL functionality with attempt to use SDL utilities in object-oriented, programmer-friendly graphic application API.
+This library is written as an improvement to SDL functionality with attempt to use SDL 
+utilities in object-oriented, programmer-friendly graphic application API.
 The code available on GitHub requires SDL 2.0.9 to function and comes without SLD files.
 
 SDL webpage is available here: https://www.libsdl.org/index.php .
