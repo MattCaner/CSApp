@@ -27,4 +27,6 @@ struct v2di {
 
 inline bool mouseInRectangle(int mouseX, int mouseY, int up, int down, int left, int right);
 
-inline bool mouseInRectangle(int mouseX, int mouseY, int rectanglePos, int w, int h);
+bool mouseInRectangle(v2di mousePos, SDL_Rect limits);
+
+v2di getMouseVector();

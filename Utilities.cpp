@@ -37,7 +37,14 @@ inline bool mouseInRectangle(int mouseX, int mouseY, int up, int down, int left,
 	else return false;
 };
 
-inline bool mouseInRectangle(int mouseX, int mouseY, int rectanglePosX, int rectanglePosY, int w, int h) {
-	if (mouseX > rectanglePosX && mouseX < rectanglePosX + w && mouseY > rectanglePosY && mouseY < rectanglePosY + h) return true;
+bool mouseInRectangle(v2di mousePos, SDL_Rect limits) {
+	if (mousePos.x > limits.x && mousePos.x < limits.x + limits.w && mousePos.y > limits.y && mousePos.y < limits.y + limits.h) return true;
 	else return false;
+}
+
+v2di getMouseVector() {
+	int x;
+	int y;
+	SDL_GetMouseState(&x, &y);
+	return v2di(x, y);
 }

@@ -4,6 +4,7 @@
 //sdl:
 #include <SDL.h>
 #include <SDL_image.h>
+
 //standard library:
 #include <cmath>
 #include <iostream>
@@ -11,14 +12,23 @@
 #include <map>
 #include <functional>
 
-//library includes: 
-#include"CSApp_basic.h"
-#include"Utilities.h"
-#include"AppState.h"
-#include"AppWindow.h"
-#include"Panel.h"
-#include"Sprite.h"
-#include"TextureArray.h"
+//Forward declarations:
+
+class AppState;
+
+class TextureArray;
+struct v2di;
+struct v2d;
+
+class Panel;
+class AppWindow;
+
+class EventHandler;
+class Sprite;
+class SpriteExtension;
+class Clickable;
+class Highlightable;
+
 
 //using directives:
 using std::cout;

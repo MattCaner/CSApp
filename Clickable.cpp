@@ -1,6 +1,10 @@
 #include"Clickable.h"
 
 
-Clickable::Clickable(std::function<void(SDL_Event*)> onClick, std::function<bool(SDL_Event*)> mouseInRectangle, bool clickAndReturn) {
-	AppState::Get().AddPolledEvent(SDL_MOUSEBUTTONDOWN, [&mouseInRectangle,&onClick](SDL_Event* e) mutable {if (mouseInRectangle(e)) onClick(e); });
+Clickable::Clickable(Sprite* spritehook, std::function<void(SDL_Event*)> onClick, bool clickAndReturn):
+	SpriteExtension(spritehook), _isClickAndReturn(clickAndReturn){
+	AppState::Get().AddPolledEvent(SDL_MOUSEBUTTONDOWN, [onClick, spritehook](SDL_Event* e) {
+		SDL_Rect tmp = spritehook->GetLimits();
+		if (mouseInRectangle(getMouseVector(), tmp)) onClick(e);
+	});
 }

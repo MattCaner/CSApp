@@ -1,5 +1,6 @@
 #pragma once
 #include"CSApp_basic.h"
+#include"Utilities.h"
 
 SDL_Texture* loadFromFile(std::string from);
 

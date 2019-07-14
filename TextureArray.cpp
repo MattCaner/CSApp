@@ -1,4 +1,5 @@
 #include "TextureArray.h"
+#include "AppState.h"
 
 TextureArray::TextureArray() {
 

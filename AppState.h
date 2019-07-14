@@ -1,8 +1,6 @@
 #pragma once
 #include"CSApp_basic.h"
-
-class Panel;
-class AppWindow;
+#include"Utilities.h"
 
 
 //Application State Controller, handles all the thing application needs to function,

@@ -1,5 +1,6 @@
 #pragma once
 #include"Panel.h"
+#include"AppState.h"
 
 Panel::Panel(Panel* parent, float sizeX, float sizeY, float posX, float posY) :
 	_parent(parent), _appWindow(nullptr), _sizeX(sizeX), _sizeY(sizeY), _posX(posX), _posY(posY) {
@@ -19,7 +20,7 @@ Panel::Panel(Panel* parent, int sizeX, int sizeY, int posX, int posY) :
 
 v2d Panel::getActualSize() {
 	if (_parent == nullptr) {
-		return v2d(_appWindow->getHeight(), _appWindow->getWidth());
+		return v2d(AppState::Get().GetWindow().getHeight(), AppState::Get().GetWindow().getWidth());
 	}
 	else {
 		return v2d(_parent->getActualSize().x * _sizeX, _parent->getActualSize().y * _sizeY);

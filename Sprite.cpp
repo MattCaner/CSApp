@@ -1,5 +1,6 @@
-#pragma once
 #include"Sprite.h"
+#include"Clickable.h"
+#include"TextureArray.h"
 
 Sprite::Sprite(Panel* panel, const TextureArray* textures, float sizeX, float sizeY, float posX, float posY) : 
 	_panel(panel), _textures(textures), _sizeX(sizeX*panel->getActualSize().x), _sizeY(sizeY*panel->getActualSize().y), _posX(posX*panel->getActualSize().x), _posY(posY* panel->getActualSize().y) {
@@ -45,4 +46,9 @@ void Sprite::Draw() {
 	SDL_Rect tmp = GetLimits();
 	SDL_RenderSetViewport(AppState::Get().GetRenderer(), &tmp);
 	SDL_RenderCopy(AppState::Get().GetRenderer(), (*_textures)[_textureIndex], NULL, NULL);
+}
+
+void Sprite::makeButton(std::function<void(SDL_Event* e)> onClick) {
+	SpriteExtension* _tmp = new Clickable(this, onClick, false);
+	_extensions.push_back(_tmp);
 }

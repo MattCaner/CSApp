@@ -1,6 +1,7 @@
 #pragma once
 #include"CSApp_basic.h"
-
+#include"AppWindow.h"
+#include"Utilities.h"
 
 class Panel {
 public:
@@ -17,10 +18,10 @@ public:
 
 	void setBackgroundTextureArray(TextureArray* t, int textureNumber = 0);
 
-	void clearBackground();
+	void clearBackground() {}
 
-	void setPosition(v2d position);
-	void setPosition(v2di position);
+	void setPosition(v2d position) {}
+	void setPosition(v2di position) {}
 
 private:
 

@@ -1,5 +1,6 @@
 #pragma once
 #include"CSApp_basic.h"
+#include"AppState.h"
 
 
 struct EventTypeHandler {

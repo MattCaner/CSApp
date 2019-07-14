@@ -1,5 +1,10 @@
 #pragma once
+#include"Panel.h"
+#include"Utilities.h"
+#include"AppState.h"
 #include"CSApp_basic.h"
+
+class SpriteExtension;
 
 class Sprite {
 public:
@@ -20,6 +25,8 @@ public:
 
 	SDL_Rect GetLimits() const;
 
+	void makeButton(std::function<void(SDL_Event* e)> onClick);
+
 private:
 
 	Panel* _panel;
@@ -31,5 +38,7 @@ private:
 	int _sizeY;
 	int _posX;
 	int _posY;
+
+	vector<SpriteExtension*> _extensions;
 
 };
