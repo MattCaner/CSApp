@@ -17,15 +17,18 @@ bool AppState::InitInstance(unsigned int height, unsigned int width, state start
 
 
 
-	if (SDLinitflags) SDL_Init(SDLinitflags);
+	if (SDLinitflags) {
+		if (SDL_Init(SDLinitflags) < 0) throw sdl_init_error("SDL not initialised sucessfully! Error code: " + std::string(SDL_GetError()));
+	}
 	
 	_window = new AppWindow(width, height);
 
 	_state = startingState;
 
 	_renderer = SDL_CreateRenderer(_window->_window,-1,RendererFlags);
+	if (_renderer == nullptr) throw sdl_init_error("Renderer not initialised succesfully! Error code: " + std::string(SDL_GetError()));
 
-	cout << "Application initialised sucessfully" << endl;
+	cout << "Application initialised" << endl;
 
 	return true;
 }

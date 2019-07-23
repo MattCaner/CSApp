@@ -1,9 +1,11 @@
 #pragma once
 #include"CSApp_basic.h"
+
 #include"AppWindow.h"
 #include"Utilities.h"
+#include"Sprite.h"
 
-class Panel {
+class Panel{
 public:
 	Panel(Panel* parent, float sizeX, float sizeY, float posX, float posY);
 
@@ -15,8 +17,6 @@ public:
 	v2d transformPanelToWorld(v2d v);
 
 	SDL_Rect GetLimits() const;
-
-	void setBackgroundTextureArray(TextureArray* t, int textureNumber = 0);
 
 	void clearBackground() {}
 
@@ -32,8 +32,5 @@ private:
 	int _sizeY;
 	int _posX;
 	int _posY;
-
-	TextureArray* _textures;
-	int _textureIndex;
 
 };

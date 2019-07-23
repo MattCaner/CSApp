@@ -1,22 +1,45 @@
 #include"Sprite.h"
 #include"Clickable.h"
 #include"TextureArray.h"
+#include"Textfield.h"
 
-Sprite::Sprite(Panel* panel, const TextureArray* textures, float sizeX, float sizeY, float posX, float posY) : 
-	_panel(panel), _textures(textures), _sizeX(sizeX*panel->getActualSize().x), _sizeY(sizeY*panel->getActualSize().y), _posX(posX*panel->getActualSize().x), _posY(posY* panel->getActualSize().y) {
+
+
+Drawable::Drawable(TextureArray* ta, int index) : _textures(ta), _index(index) {
 
 }
 
-Sprite::Sprite(Panel* panel, const TextureArray* textures, int sizeX, int sizeY, int posX, int posY) :
-	_panel(panel), _textures(textures), _sizeX(sizeX), _sizeY(sizeY), _posX(posX), _posY(posY)
+void Drawable::SetTextureNumber(int index) {
+	_index = index;
+}
+
+void Drawable::SetTextureArray(TextureArray* ta) {
+	_textures = ta;
+}
+
+int Drawable::GetTextureIndex() const {
+	return _index;
+}
+
+TextureArray* Drawable::getTextureArray() const {
+	return _textures;
+}
+
+SDL_Texture* Drawable::getCurrentTexture() const {
+	return _textures->operator[](_index);
+}
+
+Sprite::Sprite(Panel* panel, TextureArray* textures, float sizeX, float sizeY, float posX, float posY) : 
+	Drawable(textures), _panel(panel), _sizeX((int)(sizeX*(float)(panel->getActualSize().x))), _sizeY((int)(sizeY*(float)(panel->getActualSize().y))), 
+		_posX((int)(posX*(float)(panel->getActualSize().x))), _posY((int)(posY*(float)(panel->getActualSize().y))) {
+
+}
+
+Sprite::Sprite(Panel* panel, TextureArray* textures, int sizeX, int sizeY, int posX, int posY) :
+	Drawable(textures), _panel(panel), _sizeX(sizeX), _sizeY(sizeY), _posX(posX), _posY(posY)
 {
 
 }
-
-void Sprite::setTextureNumber(int indx) {
-	_textureIndex = indx;
-}
-
 SDL_Rect Sprite::GetLimits() const {
 
 	SDL_Rect tmp;
@@ -45,10 +68,18 @@ void Sprite::SetPosition(v2di v) {
 void Sprite::Draw() {
 	SDL_Rect tmp = GetLimits();
 	SDL_RenderSetViewport(AppState::Get().GetRenderer(), &tmp);
-	SDL_RenderCopy(AppState::Get().GetRenderer(), (*_textures)[_textureIndex], NULL, NULL);
+	SDL_RenderCopy(AppState::Get().GetRenderer(), getCurrentTexture(), NULL, NULL);
+	for (auto& i : _extensions) {
+		i->onDraw();
+	}
 }
 
 void Sprite::makeButton(std::function<void(SDL_Event* e)> onClick) {
 	SpriteExtension* _tmp = new Clickable(this, onClick, false);
+	_extensions.push_back(_tmp);
+}
+
+void Sprite::addTextField(wstring text, TTF_Font* font, SDL_Color color, bool wrapText) {
+	SpriteExtension* _tmp = new Textfield(text, font, color, this, wrapText);
 	_extensions.push_back(_tmp);
 }

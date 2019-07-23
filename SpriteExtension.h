@@ -4,7 +4,7 @@
 class SpriteExtension {
 public:
 	SpriteExtension(Sprite* hook): _hook(hook) {}
-	virtual void debugInfo() {}
+	virtual void onDraw() { cout << "probably error! Calling onDraw from spriteExtension" << endl; }
 protected:
 	Sprite* getHook() { return _hook; }
 private:

@@ -3,12 +3,12 @@
 #include"AppState.h"
 
 Panel::Panel(Panel* parent, float sizeX, float sizeY, float posX, float posY) :
-	_parent(parent), _appWindow(nullptr), _sizeX(sizeX), _sizeY(sizeY), _posX(posX), _posY(posY) {
+	_parent(parent), _appWindow(nullptr), _sizeX(0), _sizeY(0), _posX(0), _posY(0) {
 	if (parent != nullptr) {
-		_sizeX *= parent->getActualSize().x;
-		_sizeY *= parent->getActualSize().y;
-		_posX *= parent->getActualSize().x;
-		_posY *= parent->getActualSize().y;
+		_sizeX = (int)((float)(parent->getActualSize().x)*sizeX);
+		_sizeY = (int)((float)(parent->getActualSize().y)*sizeY);
+		_posX = (int)((float)(parent->getActualSize().x)*posX);
+		_posY = (int)((float)(parent->getActualSize().y)*posY);
 	}
 }
 
@@ -19,23 +19,12 @@ Panel::Panel(Panel* parent, int sizeX, int sizeY, int posX, int posY) :
 }
 
 v2d Panel::getActualSize() {
-	if (_parent == nullptr) {
-		return v2d(AppState::Get().GetWindow().getHeight(), AppState::Get().GetWindow().getWidth());
-	}
-	else {
-		return v2d(_parent->getActualSize().x * _sizeX, _parent->getActualSize().y * _sizeY);
-	}
+	return v2d(_sizeX, _sizeY);
+
 }
 
 v2d Panel::getActualPosition() {
-	if (_parent == nullptr) {
-		return v2d(0.f, 0.f);
-	}
-	else {
-		v2d p = _parent->getActualPosition();
-		v2d s = _parent->getActualSize();
-		return v2d(p.x + s.x * _sizeX, p.y + s.y * _sizeY);
-	}
+	return v2d(_posX, _posY);
 
 }
 
@@ -73,3 +62,7 @@ SDL_Rect Panel::GetLimits() const{
 	return tmp;
 
 }
+/*
+void Panel::Draw() {
+
+}*/

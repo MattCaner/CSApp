@@ -12,6 +12,8 @@ public:
 
 	void debugInfo() { }
 
+	void onDraw();
+
 private:
 	
 	bool _isClickAndReturn;

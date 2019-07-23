@@ -8,3 +8,7 @@ Clickable::Clickable(Sprite* spritehook, std::function<void(SDL_Event*)> onClick
 		if (mouseInRectangle(getMouseVector(), tmp)) onClick(e);
 	});
 }
+
+void Clickable::onDraw() {
+	//cout << "onDraw for clickable" << endl;
+}

@@ -1,6 +1,8 @@
 #pragma once
 #include"AppWindow.h"
 
+#include"Panel.h"
+
 
 AppWindow::AppWindow(int width, int height) : _window(SDL_CreateWindow("test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN)),
 _mainPanel(new Panel(nullptr,width,height,0,0)),_evhandler(new EventHandler()) {

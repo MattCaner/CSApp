@@ -4,6 +4,7 @@
 //sdl:
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 //standard library:
 #include <cmath>
@@ -11,6 +12,9 @@
 #include <vector>
 #include <map>
 #include <functional>
+
+//custom exception file:
+#include"SDLException.h"
 
 //Forward declarations:
 
@@ -35,3 +39,4 @@ using std::cout;
 using std::endl;
 using std::map;
 using std::vector;
+using std::wstring;
