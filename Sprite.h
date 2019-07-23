@@ -3,6 +3,9 @@
 #include"Utilities.h"
 #include"AppState.h"
 #include"CSApp_basic.h"
+#include"FontHandler.h"
+
+class Textfield;
 
 class Drawable {
 public:
@@ -40,11 +43,14 @@ public:
 	SDL_Rect GetLimits() const;
 
 	void makeButton(std::function<void(SDL_Event* e)> onClick);
-	void addTextField(wstring text, TTF_Font* font, SDL_Color color, bool wrapText = true);
+	void addTextField(wstring text, Font* font, SDL_Color color, bool wrapText = true);
+	Textfield* getTextField();
 
 private:
 
 	Panel* _panel;
+
+	Textfield* _textfield;
 
 	int _sizeX;
 	int _sizeY;

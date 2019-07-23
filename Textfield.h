@@ -1,9 +1,17 @@
 #pragma once
 #include"SpriteExtension.h"
+#include"FontHandler.h"
 
 class Textfield : public SpriteExtension {
 public:
-	Textfield(wstring text, TTF_Font* font, SDL_Color color, Sprite* hook, bool wrapText = true);
+	Textfield(wstring text, Font* font, SDL_Color color, Sprite* hook, int size = -1);
+
+	void SetTextWrap(bool state);
+	void SetPadding(float padding);
+	void SetPadding(int padding);
+
+	void SetHPadding(int padding);
+	void SetVPadding(int padding);
 
 	void Show(bool visibility);
 
@@ -19,11 +27,14 @@ public:
 private:
 
 	wstring _text;
-	TTF_Font* _font;
+	Font* _font;
 	SDL_Color _color;
-	int size;
+	int _size;
 
 	bool _wrap;
+
+	int _Vpadding;
+	int _Hpadding;
 
 	bool _visible;
 

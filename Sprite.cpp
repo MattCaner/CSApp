@@ -78,8 +78,3 @@ void Sprite::makeButton(std::function<void(SDL_Event* e)> onClick) {
 	SpriteExtension* _tmp = new Clickable(this, onClick, false);
 	_extensions.push_back(_tmp);
 }
-
-void Sprite::addTextField(wstring text, TTF_Font* font, SDL_Color color, bool wrapText) {
-	SpriteExtension* _tmp = new Textfield(text, font, color, this, wrapText);
-	_extensions.push_back(_tmp);
-}

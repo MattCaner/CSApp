@@ -10,6 +10,5 @@ Font::Font(const char* sourcepath, int size): _size(size) {
 }
 
 TTF_Font* Font::GetFont() {
-
-
+	return _currentFont;
 }

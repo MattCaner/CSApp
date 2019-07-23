@@ -11,7 +11,9 @@ _mainPanel(new Panel(nullptr,width,height,0,0)),_evhandler(new EventHandler()) {
 
 
 AppWindow::~AppWindow() {
-
+	SDL_DestroyWindow(_window);
+	delete _mainPanel;
+	delete _evhandler;
 }
 
 

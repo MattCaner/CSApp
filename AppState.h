@@ -8,6 +8,9 @@
 //one application state controller can exists per application.
 class AppState {
 public:
+
+	~AppState();
+
 	enum state {
 		FALSESTATE = -1,
 		TERMINATED = 0,

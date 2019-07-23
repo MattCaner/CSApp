@@ -2,6 +2,10 @@
 #include"AppState.h"
 #include"AppWindow.h"
 
+AppState::~AppState() {
+	delete _window;
+	delete _renderer;
+}
 
 AppState& AppState::Get() {
 	static AppState instance;

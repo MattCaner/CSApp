@@ -7,9 +7,6 @@ struct TEST {
 	int x;
 };
 
-
-#pragma optimize("",off)
-
 int main(int argc, char* args[])
 {
 	APP_INIT(480, 640, AppState::RUNNING, SDL_INIT_VIDEO);
@@ -19,7 +16,7 @@ int main(int argc, char* args[])
 	TextureArray* menuTextures = new TextureArray();
 	menuTextures->addTexture(loadFromFile("b1.bmp"));
 	menuTextures->addTexture(loadFromFile("white.bmp"));
-	TTF_Font* Arial = TTF_OpenFont("arial.ttf", 28);
+	Font* Arial = new Font("arial.ttf");
 
 	if (!Arial) {
 		cout << "Font not loaded. Error: " << TTF_GetError() << endl;
@@ -38,7 +35,8 @@ int main(int argc, char* args[])
 	TEST test1;
 
 	buttonPlay->makeButton([&test1](SDL_Event* e) mutable {test1.onMenuClick(e); });
-	buttonPlay->addTextField(L"Actual Button", Arial, { 0,0,0 }, true);
+	buttonPlay->addTextField(L"   START   ", Arial, { 0,0,0 }, true);
+	buttonPlay->getTextField()->SetPadding(0.05f);
 
 	APP.AddPolledType(SDL_QUIT);
 	APP.AddPolledEvent(SDL_QUIT, [](SDL_Event* e) {APP.Quit(); });
@@ -48,8 +46,6 @@ int main(int argc, char* args[])
 	while (APP.getState() != AppState::TERMINATED) {
 
 		APP.ClearWindow();
-//		cout << "MENUPANEL:" << menuPanel->GetLimits().x << " " << menuPanel->GetLimits().y << " " << menuPanel->GetLimits().w << " " << menuPanel->GetLimits().h << endl;
-//		cout << "LIMITS:" << whitePane->GetLimits().x << " " << whitePane->GetLimits().y << " " << whitePane->GetLimits().w << " " << whitePane->GetLimits().h << endl;
 		whitePane->Draw();
 		buttonPlay->Draw();
 
