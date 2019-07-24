@@ -2,7 +2,7 @@
 #include"SpriteExtension.h"
 #include"FontHandler.h"
 
-class Textfield : public SpriteExtension {
+class Textfield : public Sprite {
 public:
 	Textfield(wstring text, Font* font, SDL_Color color, Sprite* hook, int size = -1);
 
