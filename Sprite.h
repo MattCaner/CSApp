@@ -27,7 +27,7 @@ class SpriteExtension;
 class Sprite : public Drawable {
 public:
 
-	Sprite(Panel* panel, TextureArray* textures, float sizeX, float sizeY, float posX, float posY);
+	Sprite(Panel* panel, TextureArray* textures, float sizeX = 1.f, float sizeY = 1.f, float posX = 0.f, float posY = 0.f);
 
 	Sprite(Panel* panel, TextureArray* textures, int sizeX, int sizeY, int posX, int posY);
 
@@ -43,8 +43,6 @@ public:
 	SDL_Rect GetLimits() const;
 
 	void makeButton(std::function<void(SDL_Event* e)> onClick);
-	void addTextField(wstring text, Font* font, SDL_Color color, bool wrapText = true);
-	Textfield* getTextField();
 
 private:
 

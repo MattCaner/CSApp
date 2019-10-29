@@ -1,10 +1,10 @@
 #pragma once
-#include"SpriteExtension.h"
+#include"Sprite.h"
 #include"FontHandler.h"
 
 class Textfield : public Sprite {
 public:
-	Textfield(wstring text, Font* font, SDL_Color color, Sprite* hook, int size = -1);
+	Textfield(wstring text, Font* font, SDL_Color color, Sprite* hook, Panel* panel, float sizeX = 1.f, float sizeY = 1.f, float posX = 0.f, float posY = 0.f, int size = -1);
 
 	void SetTextWrap(bool state);
 	void SetPadding(float padding);
